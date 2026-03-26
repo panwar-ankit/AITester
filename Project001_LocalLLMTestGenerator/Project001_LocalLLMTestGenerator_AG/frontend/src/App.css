@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #000000;
+  --glass-bg: rgba(20, 20, 25, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent: #2c9aff;
+  --accent-2: #845ef7;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  background: var(--bg-dark);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  animation: float 20s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+  width: 600px; height: 600px;
+  background: var(--accent);
+  top: -200px; left: -200px;
+}
+
+.orb-2 {
+  width: 700px; height: 700px;
+  background: var(--accent-2);
+  bottom: -200px; right: -200px;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.glass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.5);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.settings-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.settings-btn:hover { background: rgba(255,255,255,0.1); }
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.wireframe-layout {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+}
+
+.glass-panel {
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+.history-item {
+  padding: 0.75rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #d4d4d8;
+  cursor: pointer;
+}
+.history-item:hover { background: rgba(255,255,255,0.1); }
+
+/* Main Workspace styling */
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.output-panel {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.jira-format {
+  width: 100%;
+  height: 100%;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.input-panel {
+  height: 120px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.wireframe-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.action-row {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.plus-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--glass-border);
+  background: var(--bg-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.plus-btn:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(44, 154, 255, 0.4);
+}
+
+.plus-btn:disabled {
+  opacity: 0.5;
+}
+
+/* Settings Modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  width: 600px;
+  padding: 2rem;
+  background: #111;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.close-btn { background: none; border: none; color: #fff; cursor: pointer; }
+
+.settings-inner-box {
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.wireframe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cyber-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.8rem 1rem;
+  color: #fff;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.modal-bottom-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.glass-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.save-btn {
+  background: transparent;
+  color: #fff;
+}
+.save-btn:hover { background: rgba(255,255,255,0.1); }
+
+.test-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+.test-btn:hover { filter: brightness(1.2); }
+.test-btn.testing { background: #eab308; }
+.test-btn.success { background: #22c55e; }
+.test-btn.error { background: #ef4444; }

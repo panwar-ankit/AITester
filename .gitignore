@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+dist/
+coverage/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Java / Maven
+target/
+*.class
+
+# Logs
+*.log
+
+# IDEs and OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
